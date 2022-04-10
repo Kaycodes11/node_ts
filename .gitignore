@@ -1,0 +1,11 @@
+# Modules
+node_modules/
+
+# Production
+dist/
+
+# Enviroment
+.env
+
+# Misc
+*.md
