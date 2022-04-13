@@ -5,17 +5,16 @@ import express, {
   Request,
   Response,
 } from "express";
-// import { startConnection } from "./db";
+import { startConnection } from "./db";
 import createHttpError from "http-errors";
 import { Server } from "http";
-// import db from "./db";
 import cors from "cors";
 import morgan from "morgan";
 import TaskRouter from "./routes/task.route";
 import { config } from "dotenv";
 
 config();
-// startConnection();
+startConnection();
 
 const app: Application = express();
 
