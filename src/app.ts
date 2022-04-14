@@ -10,8 +10,11 @@ import createHttpError from "http-errors";
 import { Server } from "http";
 import cors from "cors";
 import morgan from "morgan";
-import TaskRouter from "./routes/task.route";
 import { config } from "dotenv";
+import TaskRouter from "./routes/task.route";
+import swaggerUI from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
+import { options } from "./swaggerOptions";
 
 config();
 startConnection();
@@ -21,10 +24,11 @@ const app: Application = express();
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
+const specs = swaggerJSDoc(options);
 
 app.get("/", (req: Request, res: Response, next: NextFunction) => {
   // console.log(db.get('tasks').value());
-  
+
   res.status(200).json({ message: "Homepage" });
 });
 
@@ -34,6 +38,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 
 // the global route middleware
 app.use(TaskRouter);
+app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 // error handler must have error as first parameter
 const errorHandler: ErrorRequestHandler = (err, req, res, next) => {

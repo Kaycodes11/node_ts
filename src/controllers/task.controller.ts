@@ -36,6 +36,11 @@ export const getTask: Handler = async (req: Request, res: Response) => {
   }
 };
 
+export const count: Handler = (req: Request, res: Response) => {
+  const totalTasks = getConnection().get("tasks").value().length;
+  res.json(totalTasks);
+};
+
 export const deleteTask: Handler = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
@@ -44,4 +49,15 @@ export const deleteTask: Handler = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(error.status || 500).json(error);
   }
+};
+
+export const updateTask: Handler = async (req: Request, res: Response) => {
+  const task = getConnection().get("tasks").find({ id: req.params.id }).value();
+  if (!task) return res.status(404).json({ message: `no such task found` });
+  const updatedTask = getConnection()
+    .get("tasks")
+    .find({ id: req?.params?.id })
+    .assign(req.body)
+    .write();
+  res.json(updateTask);
 };
