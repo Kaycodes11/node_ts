@@ -17,8 +17,8 @@ export const createPhotoWithMetadata = async (req: Request, res: Response): Prom
     const photo = new Photo()
     photo.name = "Me and Bears"
     photo.description = "I am near polar bears"
-    photo.filename = "photo-with-bears.jpg"
     photo.views = 1
+    photo.filename = "photo-with-bears.jpg"
     photo.isPublished = true
 
     const metadata = new PhotoMetadata()
@@ -32,6 +32,5 @@ export const createPhotoWithMetadata = async (req: Request, res: Response): Prom
     await photoRepository.save(photo);
     await photoMetadataRepository.save(metadata);
 
-    console.log(`Photo and its metadata has been saved`);
-
+    console.log(`Photo and photo metadata has been saved`);
 }

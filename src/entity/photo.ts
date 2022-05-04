@@ -5,8 +5,8 @@ export class Photo {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
-    @Column('text')
-    avatar!: string
+    // @Column('text')
+    // avatar!: string
 
     @Column('varchar')
     name!: string
