@@ -3,6 +3,7 @@ import { DataSource } from "typeorm"
 import {User} from "./entity/user";
 import {Category} from "./entity/category";
 import {Photo, PhotoMetadata} from "./entity/photo";
+import {Profile} from "./entity/profile";
 
 
 
@@ -15,7 +16,7 @@ export const AppDataSource = new DataSource({
     database: "interviewing",
     synchronize: true,
     logging: true,
-    entities: [User, Category, Photo, PhotoMetadata],
+    entities: [User, Category, Photo, PhotoMetadata, Profile],
     migrations: [],
     subscribers: [],
 })
