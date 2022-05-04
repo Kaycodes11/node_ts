@@ -1,11 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
 
-// enum Gender {
-//     MALE= "MALE",
-//     FEMALE = "FEMALE",
-//     OTHERS = "MALE",
-//     NOT_PROVIDED = 'NOT_PROVIDED'
-// }
+export type GenderType = "Male" | "Female" | "Others" | "Not_Provided";
 
 @Entity('users')
 export class User {
@@ -18,9 +13,12 @@ export class User {
     @Column()
     lastName!: string;
 
+    @Column({unique: true})
+    email!: string;
+
     @Column()
     age!: number;
 
-    // @Column({type: "enum", enum: Gender, default: Gender.NOT_PROVIDED })
-    // gender!: Gender
+    @Column({type: 'enum', enum: ['Male', 'Female', 'Others', 'Not_Provided'], default: 'Not_Provided'})
+    gender!: GenderType
 }

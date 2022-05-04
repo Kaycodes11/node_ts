@@ -1,6 +1,8 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import {User} from "./entity/user";
+import {Category} from "./entity/category";
+import {Photo, PhotoMetadata} from "./entity/photo";
 
 
 
@@ -13,7 +15,7 @@ export const AppDataSource = new DataSource({
     database: "interviewing",
     synchronize: true,
     logging: true,
-    entities: [User],
+    entities: [User, Category, Photo, PhotoMetadata],
     migrations: [],
     subscribers: [],
 })
