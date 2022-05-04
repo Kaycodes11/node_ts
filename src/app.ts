@@ -14,6 +14,7 @@ import {config} from "dotenv";
 import TaskRouter from "./routes/task.route";
 import AuthRouter from "./routes/auth.route";
 import PhotoRouter from "./routes/photo.route"
+import ProfileRouter from "./routes/profile.route"
 import {createConnection} from "net";
 import {randomInt, randomBytes} from "crypto";
 import swaggerUI from "swagger-ui-express";
@@ -63,6 +64,7 @@ AppDataSource.initialize().then(() => {
 // the global route middleware
         app.use(AuthRouter);
         app.use(PhotoRouter);
+        app.use(ProfileRouter);
         app.use(TaskRouter);
         app.use("/docs", swaggerUI.serve, swaggerUI.setup(specs));
 // the global logger middleware
