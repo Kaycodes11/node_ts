@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany} from "typeorm";
 import {Question} from "./question";
+import {PostToCategory} from "./postToCategory";
 
 @Entity()
 export class Category {
@@ -11,6 +12,10 @@ export class Category {
 
     @ManyToMany(() => Question, (question) => question.categories)
     questions!: Question[]
+
+    @OneToMany(() => PostToCategory, (postToCategory) => postToCategory.category)
+    public postToCategories!: PostToCategory[]
+
 }
 
 

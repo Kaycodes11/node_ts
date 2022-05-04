@@ -8,6 +8,8 @@ import {RoleEntity} from "./entity/role";
 import {Author} from "./entity/author";
 import {Album} from "./entity/album";
 import {Question} from "./entity/question";
+import {PostToCategory} from "./entity/postToCategory";
+import {Post} from "./entity/post";
 
 
 export const AppDataSource = new DataSource({
@@ -19,7 +21,7 @@ export const AppDataSource = new DataSource({
     database: "interviewing",
     synchronize: true,
     logging: true,
-    entities: [User, Category, Question, Photo, PhotoMetadata, Profile, RoleEntity, Author, Album],
+    entities: [User, Category, Question, PostToCategory, Post, Photo, PhotoMetadata, Profile, RoleEntity, Author, Album],
     migrations: [],
     subscribers: [],
 })
