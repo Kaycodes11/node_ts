@@ -1,11 +1,17 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable} from "typeorm";
+import {Question} from "./question";
 
-@Entity('categories')
+@Entity()
 export class Category {
-    @PrimaryGeneratedColumn("uuid")
-    id!: string;
+    @PrimaryGeneratedColumn('uuid')
+    id!: number
 
     @Column()
-    name!: string;
+    name!: string
 
+    @ManyToMany(() => Question, (question) => question.categories)
+    questions!: Question[]
 }
+
+
+

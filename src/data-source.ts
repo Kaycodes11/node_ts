@@ -1,11 +1,13 @@
 import "reflect-metadata"
-import { DataSource } from "typeorm"
+import {DataSource} from "typeorm"
 import {User} from "./entity/user";
 import {Category} from "./entity/category";
 import {Photo, PhotoMetadata} from "./entity/photo";
 import {Profile} from "./entity/profile";
-import {RoleEntity, Roles} from "./entity/role";
-
+import {RoleEntity} from "./entity/role";
+import {Author} from "./entity/author";
+import {Album} from "./entity/album";
+import {Question} from "./entity/question";
 
 
 export const AppDataSource = new DataSource({
@@ -17,7 +19,18 @@ export const AppDataSource = new DataSource({
     database: "interviewing",
     synchronize: true,
     logging: true,
-    entities: [User, Category, Photo, PhotoMetadata, Profile, RoleEntity],
+    entities: [User, Category, Question, Photo, PhotoMetadata, Profile, RoleEntity, Author, Album],
     migrations: [],
     subscribers: [],
 })
+
+
+// export const MySQLDataSource : DataSource = new DataSource({
+//     type: `mysql`,
+//     host: `localhost`,
+//     port: 3306,
+//     username: "test",
+//     password: "test",
+//     database: "test",
+//     entities: [],
+// });
