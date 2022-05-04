@@ -1,4 +1,6 @@
-import {Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToMany, ManyToOne, OneToOne, PrimaryGeneratedColumn, Relation} from "typeorm";
+import {Author} from "./author";
+import {Album} from "./album";
 
 @Entity()
 export class Photo {
@@ -22,6 +24,17 @@ export class Photo {
 
     @Column('boolean')
     isPublished!: boolean
+
+    @OneToOne(() => PhotoMetadata, (photoMetadata) => photoMetadata.photo)
+    metadata!: Relation<PhotoMetadata>;
+
+    // Many instance of Photo has single instance of Author
+    @ManyToOne(() => Author, (author) => author.photos)
+    author!: Author;
+
+    // Many instance of Photo[] has Many instance of Album[]
+    @ManyToMany(() => Album, (album) => album.photos)
+    albums! : Album[]
 }
 
 @Entity()
@@ -47,7 +60,7 @@ export class PhotoMetadata {
 
     @OneToOne(() => Photo)
     @JoinColumn()
-    photo!: Photo
+    photo!: Relation<Photo>
 }
 
 // photo_metadata                      |
@@ -59,3 +72,4 @@ export class PhotoMetadata {
 // | compressed  | boolean      |                            |
 // | orientation | varchar(255) |                            |
 // | photoId     | int(11)      | FOREIGN KEY
+// | authorId    | int(11)      | FOREIGN KEY

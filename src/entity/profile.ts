@@ -11,11 +11,11 @@ export class Profile {
     @Column('text')
     bio!: string;
 
-    @CreateDateColumn({ name: 'created_at', default: () => 'current_timestamp' })
-    created_at!: Date;
+    @CreateDateColumn({ name: 'createdDate', default: () => 'current_timestamp' })
+    createdDate!: Date;
 
-    @UpdateDateColumn({ name: 'updated_at', default: () => 'current_timestamp' })
-    updated_at!: Date;
+    @UpdateDateColumn({ name: 'updatedDate', default: () => 'current_timestamp' })
+    updatedDate!: Date;
 
     @DeleteDateColumn()
     deletedDate!: Date;
