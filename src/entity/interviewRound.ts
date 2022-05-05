@@ -11,10 +11,8 @@ export class InterviewRound {
     id!: string;
 
     @ManyToOne(() => Interview, (interview) => interview.interviewRounds)
-    interview!: Interview
+    interview!: Interview;
 
     @ManyToOne(() => Schedule, (schedule) => schedule.interviewRounds)
-    schedule!: Schedule
-
-
+    schedule!: Schedule;
 }
