@@ -100,6 +100,6 @@
 
   },
   "include": ["./src"], /* only compile the TS to JS that's within src folder  */
-//  "include": ["src/**/*.ts" ],
+//  "include": ["src/**/*.ts", "src/**/*.json" ],
   "exclude": ["node_modules", "dist", "__tests__", "coverage"]
 }

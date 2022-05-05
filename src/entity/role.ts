@@ -1,10 +1,10 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 import {GenderType} from "./user";
 
-export type RolesType = "Guest" | "HR" | "Interviewer" | "Interviewee";
+export type RolesType = "Manager" | "HR" | "Interviewer" | "Interviewee";
 
 export enum Roles  {
-    Guest = `Guest`,
+    Guest = `Manager`,
     HR = `HR`,
     Interviewee = `Interviewee`,
     Interviewer = `Interviewer`

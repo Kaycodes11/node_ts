@@ -10,6 +10,13 @@ import {Album} from "./entity/album";
 import {Question} from "./entity/question";
 import {PostToCategory} from "./entity/postToCategory";
 import {Post} from "./entity/post";
+import {Schedule} from "./entity/schedule";
+import {Round} from "./entity/round";
+import {Job} from "./entity/job";
+import {Feedback} from "./entity/feedback";
+import {Interview} from "./entity/interview";
+import {Permission} from "./entity/permission";
+import {InterviewRound} from "./entity/interviewRound";
 
 
 export const AppDataSource = new DataSource({
@@ -21,7 +28,7 @@ export const AppDataSource = new DataSource({
     database: "interviewing",
     synchronize: true,
     logging: true,
-    entities: [User, Category, Question, PostToCategory, Post, Photo, PhotoMetadata, Profile, RoleEntity, Author, Album],
+    entities: [Album, Author, PhotoMetadata, Feedback, Category, Interview, Job, InterviewRound, Permission, Photo, Post, PostToCategory, Profile, Question,  Round, Schedule, User, RoleEntity],
     migrations: [],
     subscribers: [],
 })

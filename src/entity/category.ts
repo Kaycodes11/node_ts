@@ -5,7 +5,7 @@ import {PostToCategory} from "./postToCategory";
 @Entity()
 export class Category {
     @PrimaryGeneratedColumn('uuid')
-    id!: number
+    id!: string;
 
     @Column()
     name!: string
