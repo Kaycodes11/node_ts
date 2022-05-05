@@ -1,8 +1,11 @@
 import express, {Handler, Request, Response, NextFunction} from "express";
 import {AppDataSource} from "../data-source";
 import {User} from "../entity/user";
+import {RoleEntity} from "../entity/role";
+import {Roles as SeedRoles} from "../seeds/role.seed";
 
 const userRepository = AppDataSource.getRepository(User);
+const roleRepository = AppDataSource.getRepository(RoleEntity);
 
 export const getUsers: Handler = async (req: Request, res: Response): Promise<void> => {
     const users: User[] = await AppDataSource.manager.find(User);
@@ -17,6 +20,11 @@ export const getUserById: Handler = async (req: Request, res: Response): Promise
 export  const seedUsers: Handler = async (request: Request, response: Response): Promise<void> => {
     await userRepository.createQueryBuilder().insert().into(User).values([{ firstName: "Jon", lastName: 'Moxley', email: 'moxley@gmail.com', age: 16 }, { firstName: "Jon1", lastName: 'Moxley1', email: 'moxley11@gmail.com', age: 16 }]).execute();
 };
+
+export const seedRoles : Handler = async(request: Request, response: Response): Promise<void> => {
+    // @ts-ignore
+    await roleRepository.createQueryBuilder().insert().into(RoleEntity).values(SeedRoles).execute();
+}
 
 // now, here what validation to use > Entity validation or Dto Validation, let's try Entity Validation
 export const signUp: Handler = async (request: Request, response: Response): Promise<void> => {
