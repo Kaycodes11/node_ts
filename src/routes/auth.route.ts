@@ -7,6 +7,7 @@ router.get('/auth', Auth.getUsers);
 router.get('/auth/:userId', Auth.getUserById);
 router.post('/auth/seed', Auth.seedUsers);
 router.post('/auth/signup', Auth.signUp);
+router.post('/auth/seed/roles', Auth.seedRoles);
 router.put('/auth/:userId', Auth.updateUser);
 router.delete('/auth/:userId', Auth.deleteUser);
 
